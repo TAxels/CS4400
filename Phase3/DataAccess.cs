@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace Phase3
 {
@@ -35,20 +36,45 @@ namespace Phase3
             }
             finally
             {
-                DataAccess.CloseConnection();
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
         }
 
-        public static MySqlDataReader GetPickups(int pickUpDay)
+        public static DataSet GetPickups(int pickUpDay)
         {
-            string query = "SELECT Client.Client_ID, FirstName, LastName, Phone, Street, City, State, Zipcode, Bag_Type, Size FROM Client INNER JOIN FamilySize WHERE PickUpDay=@PickUpDay";
+            string query = String.Format("SELECT Client.Client_ID, FirstName, LastName, Phone, CONCAT(Street, ', ', City, ', ', State, ' ', Zipcode) AS Address, Size, PickUpDay FROM Client INNER JOIN FamilySize WHERE PickUpDay={0}", pickUpDay);
             //string query = "SELECT * FROM Client INNER JOIN FamilySize";
 
-            MySqlParameter[] parameters = new MySqlParameter[] {
-                new MySqlParameter("@PickUpDay", pickUpDay)
-            };
+            return DataAccess.ReadSet(query);
+        }
 
-            return DataAccess.ReadData(query, parameters);
+        public static DataSet ReadSet(string query)
+        {
+            try
+            {
+                conn.Open();
+
+                DataSet ds = new DataSet();
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                da.Fill(ds, "Pickups");
+
+                return ds;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+                return null;
+            }
+            finally
+            {
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
         }
 
         public static MySqlDataReader ReadData(string query, MySqlParameter[] parameters)
@@ -90,14 +116,6 @@ namespace Phase3
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
-            }
-        }
-
-        public static void CloseConnection()
-        {
-            if (conn != null)
-            {
-                conn.Close();
             }
         }
     }

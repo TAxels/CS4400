@@ -13,6 +13,7 @@ namespace PresentationTier
 {
     public partial class Pickups : UserControl
     {
+        private DataSet ds;
         private List<int> userIds = new List<int>();
 
         public Pickups()
@@ -22,31 +23,26 @@ namespace PresentationTier
 
         public int getClient()
         {
-            return userIds[clientData.SelectedRows[0].Index];
+            return (int) clientData.SelectedRows[0].Cells["CID"].Value;
         }
 
         public void addBtnReturnClickHandler(EventHandler handler)
         {
-            this.btnReturn.Click += handler;
+            btnReturn.Click += handler;
         }
 
-        public void addBtnSignInHandler(EventHandler handler)
+        public void addBtnSignInClickHandler(EventHandler handler)
         {
-            this.btnSignIn.Click += handler;
+            btnSignIn.Click += handler;
         }
 
         private void cbPday_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MySqlDataReader rdr = Phase3.DataAccess.GetPickups(Convert.ToInt32(cbPday.SelectedItem));
+            ds = Phase3.DataAccess.GetPickups(Convert.ToInt32(cbPday.SelectedItem));
 
-            while (rdr.Read())
-            {
-                userIds.Add(rdr.GetInt32(0));
-                string address = rdr.GetString(4) + ", " + rdr.GetString(5) + ", " + rdr.GetString(6) + " " + rdr.GetString(7);
-                clientData.Rows.Add(rdr.GetString(1), rdr.GetString(2), rdr.GetInt32(9), address, rdr.GetString(3), rdr.GetString(8));
-            }
-
-            Phase3.DataAccess.CloseConnection();
+            clientData.AutoGenerateColumns = false;
+            clientData.DataSource = ds;
+            clientData.DataMember = ds.Tables[0].ToString();
         }
     }
 }

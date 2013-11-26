@@ -28,7 +28,7 @@ namespace PresentationTier
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
 
-            control.addBtnSignInHandler(new EventHandler(SignInClickHandler));
+            control.addBtnSignInClickHandler(new EventHandler(SignInClickHandler));
             control.addBtnReturnClickHandler(new EventHandler(CloseClickHandler));
         }
 

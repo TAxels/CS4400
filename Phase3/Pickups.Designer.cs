@@ -29,21 +29,24 @@
         private void InitializeComponent()
         {
             this.clientData = new System.Windows.Forms.DataGridView();
+            this.btnSignIn = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbPday = new System.Windows.Forms.ComboBox();
             this.last = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.first = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSignIn = new System.Windows.Forms.Button();
-            this.btnReturn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbPday = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.clientData)).BeginInit();
             this.SuspendLayout();
             // 
             // clientData
             // 
+            this.clientData.AllowUserToAddRows = false;
+            this.clientData.AllowUserToDeleteRows = false;
             this.clientData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -51,6 +54,7 @@
             this.clientData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.last,
+            this.CID,
             this.first,
             this.size,
             this.address,
@@ -64,42 +68,6 @@
             this.clientData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientData.Size = new System.Drawing.Size(742, 240);
             this.clientData.TabIndex = 0;
-            // 
-            // last
-            // 
-            this.last.HeaderText = "Last Name";
-            this.last.Name = "last";
-            this.last.ReadOnly = true;
-            // 
-            // first
-            // 
-            this.first.HeaderText = "First Name";
-            this.first.Name = "first";
-            this.first.ReadOnly = true;
-            // 
-            // size
-            // 
-            this.size.HeaderText = "Size";
-            this.size.Name = "size";
-            this.size.ReadOnly = true;
-            // 
-            // address
-            // 
-            this.address.HeaderText = "Address";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            // 
-            // telephone
-            // 
-            this.telephone.HeaderText = "Telephone";
-            this.telephone.Name = "telephone";
-            this.telephone.ReadOnly = true;
-            // 
-            // day
-            // 
-            this.day.HeaderText = "Monthly Pickup Day";
-            this.day.Name = "day";
-            this.day.ReadOnly = true;
             // 
             // btnSignIn
             // 
@@ -146,6 +114,56 @@
             this.cbPday.TabIndex = 4;
             this.cbPday.SelectedIndexChanged += new System.EventHandler(this.cbPday_SelectedIndexChanged);
             // 
+            // last
+            // 
+            this.last.DataPropertyName = "LastName";
+            this.last.HeaderText = "Last Name";
+            this.last.Name = "last";
+            this.last.ReadOnly = true;
+            // 
+            // CID
+            // 
+            this.CID.DataPropertyName = "Client_ID";
+            this.CID.HeaderText = "CID";
+            this.CID.Name = "CID";
+            this.CID.ReadOnly = true;
+            this.CID.Visible = false;
+            // 
+            // first
+            // 
+            this.first.DataPropertyName = "FirstName";
+            this.first.HeaderText = "First Name";
+            this.first.Name = "first";
+            this.first.ReadOnly = true;
+            // 
+            // size
+            // 
+            this.size.DataPropertyName = "Size";
+            this.size.HeaderText = "Size";
+            this.size.Name = "size";
+            this.size.ReadOnly = true;
+            // 
+            // address
+            // 
+            this.address.DataPropertyName = "Address";
+            this.address.HeaderText = "Address";
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            // 
+            // telephone
+            // 
+            this.telephone.DataPropertyName = "Phone";
+            this.telephone.HeaderText = "Telephone";
+            this.telephone.Name = "telephone";
+            this.telephone.ReadOnly = true;
+            // 
+            // day
+            // 
+            this.day.DataPropertyName = "PickUpDay";
+            this.day.HeaderText = "Monthly Pickup Day";
+            this.day.Name = "day";
+            this.day.ReadOnly = true;
+            // 
             // Pickups
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -167,15 +185,16 @@
         #endregion
 
         private System.Windows.Forms.DataGridView clientData;
+        private System.Windows.Forms.Button btnSignIn;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbPday;
         private System.Windows.Forms.DataGridViewTextBoxColumn last;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn first;
         private System.Windows.Forms.DataGridViewTextBoxColumn size;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn telephone;
         private System.Windows.Forms.DataGridViewTextBoxColumn day;
-        private System.Windows.Forms.Button btnSignIn;
-        private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbPday;
     }
 }
