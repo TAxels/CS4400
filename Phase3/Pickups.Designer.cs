@@ -37,6 +37,8 @@
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbPday = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.clientData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,13 +56,13 @@
             this.address,
             this.telephone,
             this.day});
-            this.clientData.Location = new System.Drawing.Point(0, 0);
+            this.clientData.Location = new System.Drawing.Point(0, 44);
             this.clientData.MultiSelect = false;
             this.clientData.Name = "clientData";
             this.clientData.ReadOnly = true;
             this.clientData.RowTemplate.Height = 24;
             this.clientData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.clientData.Size = new System.Drawing.Size(742, 242);
+            this.clientData.Size = new System.Drawing.Size(742, 240);
             this.clientData.TabIndex = 0;
             // 
             // last
@@ -102,7 +104,7 @@
             // btnSignIn
             // 
             this.btnSignIn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSignIn.Location = new System.Drawing.Point(334, 256);
+            this.btnSignIn.Location = new System.Drawing.Point(334, 298);
             this.btnSignIn.Name = "btnSignIn";
             this.btnSignIn.Size = new System.Drawing.Size(78, 27);
             this.btnSignIn.TabIndex = 1;
@@ -112,25 +114,53 @@
             // btnReturn
             // 
             this.btnReturn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReturn.Location = new System.Drawing.Point(293, 291);
+            this.btnReturn.Location = new System.Drawing.Point(293, 333);
             this.btnReturn.Name = "btnReturn";
             this.btnReturn.Size = new System.Drawing.Size(158, 27);
             this.btnReturn.TabIndex = 2;
             this.btnReturn.Text = "Return to Home Page";
             this.btnReturn.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(291, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pickup Day:";
+            // 
+            // cbPday
+            // 
+            this.cbPday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPday.FormattingEnabled = true;
+            this.cbPday.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cbPday.Location = new System.Drawing.Point(381, 9);
+            this.cbPday.Name = "cbPday";
+            this.cbPday.Size = new System.Drawing.Size(72, 24);
+            this.cbPday.TabIndex = 4;
+            this.cbPday.SelectedIndexChanged += new System.EventHandler(this.cbPday_SelectedIndexChanged);
+            // 
             // Pickups
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.Controls.Add(this.cbPday);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.clientData);
             this.Name = "Pickups";
-            this.Size = new System.Drawing.Size(745, 331);
+            this.Size = new System.Drawing.Size(745, 373);
             ((System.ComponentModel.ISupportInitialize)(this.clientData)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -145,5 +175,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn day;
         private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbPday;
     }
 }

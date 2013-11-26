@@ -28,14 +28,18 @@ namespace PresentationTier
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
 
+            control.addBtnSignInHandler(new EventHandler(SignInClickHandler));
             control.addBtnReturnClickHandler(new EventHandler(CloseClickHandler));
         }
 
         private void SignInClickHandler(object sender, EventArgs e)
         {
-            //panel1.Controls[0].GetClient();
+            int cid = ((Pickups) panel1.Controls[0]).getClient();
             panel1.Controls.Clear();
 
+            FBag control = new FBag(cid);
+            control.Dock = DockStyle.Fill;
+            panel1.Controls.Add(control);
         }
 
         private void CloseClickHandler(object sender, EventArgs e)
