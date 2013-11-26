@@ -28,55 +28,81 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.bagData = new System.Windows.Forms.DataGridView();
+            this.personName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.bagData)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lblName
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(252, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(252, 26);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(46, 17);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "label1";
             // 
-            // label2
+            // lblDate
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(252, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(252, 54);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(46, 17);
+            this.lblDate.TabIndex = 1;
+            this.lblDate.Text = "label2";
             // 
-            // dataGridView1
+            // bagData
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.bagData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(544, 295);
-            this.dataGridView1.TabIndex = 2;
+            this.bagData.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.bagData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.bagData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.personName,
+            this.Product,
+            this.Quantity});
+            this.bagData.Location = new System.Drawing.Point(3, 98);
+            this.bagData.Name = "bagData";
+            this.bagData.RowTemplate.Height = 24;
+            this.bagData.Size = new System.Drawing.Size(544, 295);
+            this.bagData.TabIndex = 2;
+            // 
+            // personName
+            // 
+            this.personName.DataPropertyName = "Name";
+            this.personName.HeaderText = "PersonName";
+            this.personName.Name = "personName";
+            this.personName.Visible = false;
+            // 
+            // Product
+            // 
+            this.Product.DataPropertyName = "Product_Name";
+            this.Product.HeaderText = "Product";
+            this.Product.Name = "Product";
+            // 
+            // Quantity
+            // 
+            this.Quantity.DataPropertyName = "Current_Mnth_Qty";
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
             // 
             // FBag
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.bagData);
+            this.Controls.Add(this.lblDate);
+            this.Controls.Add(this.lblName);
             this.Name = "FBag";
             this.Size = new System.Drawing.Size(550, 396);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bagData)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,8 +110,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.DataGridView bagData;
+        private System.Windows.Forms.DataGridViewTextBoxColumn personName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Product;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
     }
 }

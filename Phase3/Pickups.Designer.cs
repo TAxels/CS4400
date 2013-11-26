@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbPday = new System.Windows.Forms.ComboBox();
             this.last = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BagName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.first = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.size = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +55,7 @@
             this.clientData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.clientData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.last,
+            this.BagName,
             this.CID,
             this.first,
             this.size,
@@ -120,6 +122,14 @@
             this.last.HeaderText = "Last Name";
             this.last.Name = "last";
             this.last.ReadOnly = true;
+            // 
+            // BagName
+            // 
+            this.BagName.DataPropertyName = "Bag_Type";
+            this.BagName.HeaderText = "Bag Name";
+            this.BagName.Name = "BagName";
+            this.BagName.ReadOnly = true;
+            this.BagName.Visible = false;
             // 
             // CID
             // 
@@ -190,6 +200,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbPday;
         private System.Windows.Forms.DataGridViewTextBoxColumn last;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BagName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CID;
         private System.Windows.Forms.DataGridViewTextBoxColumn first;
         private System.Windows.Forms.DataGridViewTextBoxColumn size;

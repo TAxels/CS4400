@@ -13,7 +13,6 @@ namespace PresentationTier
 {
     public partial class Pickups : UserControl
     {
-        private DataSet ds;
         private List<int> userIds = new List<int>();
 
         public Pickups()
@@ -38,7 +37,7 @@ namespace PresentationTier
 
         private void cbPday_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ds = Phase3.DataAccess.GetPickups(Convert.ToInt32(cbPday.SelectedItem));
+            DataSet ds = Phase3.DataAccess.GetPickups(Convert.ToInt32(cbPday.SelectedItem));
 
             clientData.AutoGenerateColumns = false;
             clientData.DataSource = ds;

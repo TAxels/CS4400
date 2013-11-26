@@ -51,6 +51,13 @@ namespace Phase3
             return DataAccess.ReadSet(query);
         }
 
+        public static DataSet GetFBag(int cid)
+        {
+            string query = String.Format("SELECT CONCAT(FirstName, ' ', LastName) AS Name, Product_Name, Current_Mnth_Qty FROM Client INNER JOIN Holds ON Client.Bag_Type=Holds.Bag_Name WHERE Client_ID={0}", cid);
+
+            return DataAccess.ReadSet(query);
+        }
+
         public static DataSet ReadSet(string query)
         {
             try
@@ -59,7 +66,7 @@ namespace Phase3
 
                 DataSet ds = new DataSet();
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-                da.Fill(ds, "Pickups");
+                da.Fill(ds, "Results");
 
                 return ds;
             }

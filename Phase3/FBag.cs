@@ -17,8 +17,13 @@ namespace PresentationTier
         {
             InitializeComponent();
 
-            DataSet ds = Phase3.DataAccess.GetPickups(cid);
+            DataSet ds = Phase3.DataAccess.GetFBag(cid);
+            bagData.AutoGenerateColumns = false;
+            bagData.DataSource = ds;
+            bagData.DataMember = ds.Tables[0].ToString();
 
+            lblName.Text = (string) bagData.Rows[0].Cells["PersonName"].Value;
+            lblDate.Text = DateTime.Now.ToString();
         }
 
 
