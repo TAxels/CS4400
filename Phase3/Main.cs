@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Phase3;
 
 namespace PresentationTier
 {
@@ -45,6 +46,14 @@ namespace PresentationTier
         private void CloseClickHandler(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
+        }
+
+        private void monthlyServiceReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            MSR control = new MSR();
+            control.Dock = DockStyle.Fill;
+            panel1.Controls.Add(control);
         }
     }
 }
