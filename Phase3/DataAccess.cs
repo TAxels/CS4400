@@ -47,7 +47,7 @@ namespace Phase3
 
         public static DataSet GetPickups(int pickUpDay)
         {
-            string query = String.Format("SELECT Client.Client_ID, FirstName, LastName, Phone, CONCAT(Street, ', ', City, ', ', State, ' ', Zipcode) AS Address, Size, PickUpDay FROM Client INNER JOIN FamilySize WHERE PickUpDay={0}", pickUpDay);
+            string query = String.Format("SELECT Client.Client_ID, FirstName, LastName, Phone, CONCAT(Street, ', ', City, ', ', State, ' ', Zipcode) AS Address, Size, PickUpDay FROM Client INNER JOIN FamilySize ON Client.Client_ID=FamilySize.Client_ID WHERE PickUpDay={0}", pickUpDay);
             //string query = "SELECT * FROM Client INNER JOIN FamilySize";
 
             return DataAccess.ReadSet(query);
