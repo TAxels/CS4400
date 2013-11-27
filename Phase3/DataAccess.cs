@@ -53,10 +53,21 @@ namespace Phase3
 
         public static DataSet GetFBag(int cid)
         {
-            string query = String.Format("SELECT CONCAT(FirstName, ' ', LastName) AS Name, Product_Name, Current_Mnth_Qty FROM Client INNER JOIN Holds ON Client.Bag_Type=Holds.Bag_Name WHERE Client_ID={0}", cid);
+            string query = String.Format("SELECT CONCAT(FirstName, ' ', LastName) AS Name, Bag_Name, Product_Name, Current_Mnth_Qty FROM Client INNER JOIN Holds ON Client.Bag_Type=Holds.Bag_Name WHERE Client_ID={0}", cid);
 
             return DataAccess.ReadSet(query);
         }
+
+        //public static DataSet LogPickup(int cid, string bagName)
+        //{
+        //    string query = "INSERT INTO PickupTransaction (Date_Of_Pick_Up) VALUES (NOW())";
+
+        //    MySqlParameter[] parameters = new MySqlParameter[]
+        //    {
+        //        new MySqlParameter("@Username", username),
+        //        new MySqlParameter("@Password", password)
+        //    };
+        //}
 
         public static DataSet ReadSet(string query)
         {
@@ -123,6 +134,10 @@ namespace Phase3
             catch (MySqlException ex)
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
+            }
+            finally
+            {
+
             }
         }
     }

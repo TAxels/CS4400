@@ -13,10 +13,13 @@ namespace PresentationTier
 {
     public partial class FBag : UserControl
     {
+        private int cid;
+
         public FBag(int cid)
         {
             InitializeComponent();
 
+            this.cid = cid;
             DataSet ds = Phase3.DataAccess.GetFBag(cid);
             bagData.AutoGenerateColumns = false;
             bagData.DataSource = ds;
@@ -26,6 +29,24 @@ namespace PresentationTier
             lblDate.Text = DateTime.Now.ToString();
         }
 
+        private void bagData_SelectionChanged(object sender, EventArgs e)
+        {
+            bagData.ClearSelection();
+        }
 
+        public void addBtnReturnClickHandler(EventHandler handler)
+        {
+            btnReturn.Click += handler;
+        }
+
+        public void addBtnCompletelickHandler(EventHandler handler)
+        {
+            btnComplete.Click += handler;
+        }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            //Phase3.DataAccess.LogPickup(this.cid, bagData.Rows[0].Cells["BagName"]);
+        }
     }
 }
