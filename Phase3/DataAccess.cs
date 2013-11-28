@@ -60,16 +60,17 @@ namespace Phase3
             return DataAccess.ReadSet(query);
         }
 
-        //public static DataSet LogPickup(int cid, string bagName)
-        //{
-        //    string query = "INSERT INTO PickupTransaction (Date_Of_Pick_Up) VALUES (NOW())";
+        public static void LogPickup(int cid, string bagName)
+        {
+            string query = "INSERT INTO Pick_Up_Transaction (Date_Of_Pick_Up) VALUES (NOW()); INSERT INTO Pick_Up (Client_ID, Bag_Name) VALUES (@cid, @bagName)";
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+                new MySqlParameter("@cid", cid),
+                new MySqlParameter("@bagName", bagName)
+            };
 
-        //    MySqlParameter[] parameters = new MySqlParameter[]
-        //    {
-        //        new MySqlParameter("@Username", username),
-        //        new MySqlParameter("@Password", password)
-        //    };
-        //}
+            WriteData(query, parameters);
+        }
 
         public static DataSet ReadSet(string query)
         {
@@ -139,7 +140,10 @@ namespace Phase3
             }
             finally
             {
-
+                if (conn != null)
+                {
+                    conn.Close();
+                }
             }
         }
     }

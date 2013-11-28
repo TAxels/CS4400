@@ -46,7 +46,7 @@ namespace PresentationTier
 
         private void btnComplete_Click(object sender, EventArgs e)
         {
-            //Phase3.DataAccess.LogPickup(this.cid, bagData.Rows[0].Cells["BagName"]);
+            Phase3.DataAccess.LogPickup(this.cid, (string) bagData.Rows[0].Cells["BagName"].Value);
         }
     }
 }

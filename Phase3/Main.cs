@@ -25,7 +25,9 @@ namespace PresentationTier
 
         private void pickupsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            panel1.Controls.Clear();
             Pickups control = new Pickups();
+            control.Name = "pickups";
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
 
@@ -35,17 +37,25 @@ namespace PresentationTier
 
         private void SignInClickHandler(object sender, EventArgs e)
         {
-            int cid = ((Pickups) panel1.Controls[0]).getClient();
-            panel1.Controls.Clear();
-
+            int cid = ((Pickups) panel1.Controls.Find("pickups", false).FirstOrDefault()).getClient();
             FBag control = new FBag(cid);
+            control.Name = "fBag";
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
+            control.BringToFront();
+
+            control.addBtnCompletelickHandler(new EventHandler(CloseClickHandler));
+            control.addBtnReturnClickHandler(new EventHandler(PickupsClickHandler));
         }
 
         private void CloseClickHandler(object sender, EventArgs e)
         {
             panel1.Controls.Clear();
+        }
+
+        private void PickupsClickHandler(object sender, EventArgs e)
+        {
+            panel1.Controls.RemoveByKey("fBag");
         }
 
         private void monthlyServiceReportToolStripMenuItem_Click(object sender, EventArgs e)
