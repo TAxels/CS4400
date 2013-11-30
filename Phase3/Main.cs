@@ -65,5 +65,23 @@ namespace PresentationTier
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
         }
+
+        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            Dropoff control = new Dropoff();
+            control.Name = "dropoff";
+            control.Dock = DockStyle.Fill;
+            panel1.Controls.Add(control);
+        }
+
+        private void cToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            AddClient control = new AddClient();
+            control.Name = "addclient";
+            control.Dock = DockStyle.Fill;
+            panel1.Controls.Add(control);
+        }
     }
 }

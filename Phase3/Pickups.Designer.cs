@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.clientData = new System.Windows.Forms.DataGridView();
-            this.btnSignIn = new System.Windows.Forms.Button();
-            this.btnReturn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbPday = new System.Windows.Forms.ComboBox();
             this.last = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BagName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,6 +37,10 @@
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.day = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSignIn = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbPday = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.clientData)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,51 +70,6 @@
             this.clientData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientData.Size = new System.Drawing.Size(742, 240);
             this.clientData.TabIndex = 0;
-            // 
-            // btnSignIn
-            // 
-            this.btnSignIn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSignIn.Location = new System.Drawing.Point(334, 298);
-            this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(78, 27);
-            this.btnSignIn.TabIndex = 1;
-            this.btnSignIn.Text = "Sign In";
-            this.btnSignIn.UseVisualStyleBackColor = true;
-            // 
-            // btnReturn
-            // 
-            this.btnReturn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReturn.Location = new System.Drawing.Point(293, 333);
-            this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(158, 27);
-            this.btnReturn.TabIndex = 2;
-            this.btnReturn.Text = "Return to Home Page";
-            this.btnReturn.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(291, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Pickup Day:";
-            // 
-            // cbPday
-            // 
-            this.cbPday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPday.FormattingEnabled = true;
-            this.cbPday.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.cbPday.Location = new System.Drawing.Point(381, 9);
-            this.cbPday.Name = "cbPday";
-            this.cbPday.Size = new System.Drawing.Size(72, 24);
-            this.cbPday.TabIndex = 4;
-            this.cbPday.SelectedIndexChanged += new System.EventHandler(this.cbPday_SelectedIndexChanged);
             // 
             // last
             // 
@@ -173,6 +128,77 @@
             this.day.HeaderText = "Monthly Pickup Day";
             this.day.Name = "day";
             this.day.ReadOnly = true;
+            // 
+            // btnSignIn
+            // 
+            this.btnSignIn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSignIn.Location = new System.Drawing.Point(334, 298);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(78, 27);
+            this.btnSignIn.TabIndex = 1;
+            this.btnSignIn.Text = "Sign In";
+            this.btnSignIn.UseVisualStyleBackColor = true;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnReturn.Location = new System.Drawing.Point(293, 333);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(158, 27);
+            this.btnReturn.TabIndex = 2;
+            this.btnReturn.Text = "Return to Home Page";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(291, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pickup Day:";
+            // 
+            // cbPday
+            // 
+            this.cbPday.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPday.FormattingEnabled = true;
+            this.cbPday.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31"});
+            this.cbPday.Location = new System.Drawing.Point(381, 9);
+            this.cbPday.Name = "cbPday";
+            this.cbPday.Size = new System.Drawing.Size(72, 24);
+            this.cbPday.TabIndex = 4;
+            this.cbPday.SelectedIndexChanged += new System.EventHandler(this.cbPday_SelectedIndexChanged);
             // 
             // Pickups
             // 

@@ -45,7 +45,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddClient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddClient.Designer.cs">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddMembers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AddMembers.Designer.cs">
+      <DependentUpon>AddMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Clients.Designer.cs">
+      <DependentUpon>Clients.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Dropoff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dropoff.Designer.cs">
+      <DependentUpon>Dropoff.cs</DependentUpon>
+    </Compile>
     <Compile Include="FBag.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -78,6 +102,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddClient.resx">
+      <DependentUpon>AddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clients.resx">
+      <DependentUpon>Clients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dropoff.resx">
+      <DependentUpon>Dropoff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FBag.resx">
       <DependentUpon>FBag.cs</DependentUpon>
     </EmbeddedResource>
