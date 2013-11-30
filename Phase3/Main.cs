@@ -85,5 +85,14 @@ namespace PresentationTier
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
         }
+
+        private void familyListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            Clients control = new Clients();
+            control.Name = "clients";
+            control.Dock = DockStyle.Fill;
+            panel1.Controls.Add(control);
+        }
     }
 }
