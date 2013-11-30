@@ -17,5 +17,15 @@ namespace Phase3
             InitializeComponent();
             lblDatetime.Text = DateTime.Now.ToString();
         }
+
+        private void btnComplete_Click(object sender, EventArgs e)
+        {
+            DataAccess.CompleteDropoff(dgDropoff);
+        }
+
+        public void addBtnCompleteClickHandler(EventHandler handler)
+        {
+            btnComplete.Click += handler;
+        }
     }
 }

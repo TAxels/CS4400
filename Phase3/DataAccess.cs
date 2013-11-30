@@ -19,36 +19,27 @@ namespace Phase3
         public static bool ValidateUser(string username, string password)
         {
             string query = "SELECT * FROM User WHERE Username=@Username AND Password=@Password";
-
             MySqlParameter[] parameters = new MySqlParameter[]
             {
                 new MySqlParameter("@Username", username),
                 new MySqlParameter("@Password", password)
             };
 
-            try
-            {
-                MySqlDataReader rdr = DataAccess.ReadData(query, parameters);
+            DataAccess.OpenConn();
+            MySqlDataReader rdr = DataAccess.ReadData(query, parameters);
+            bool isRowReturned = rdr.Read();
+            DataAccess.CloseConn();
 
-                if (rdr.Read())
-                {
-                    return true;
-                }
-                return false;
-            }
-            finally
+            if (isRowReturned)
             {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
+                return true;
             }
+            return false;
         }
 
         public static DataSet GetPickups(int pickUpDay)
         {
             string query = String.Format("SELECT Client.Client_ID, FirstName, LastName, Phone, CONCAT(Street, ', ', City, ', ', State, ' ', Zipcode) AS Address, Size, PickUpDay FROM Client INNER JOIN FamilySize ON Client.Client_ID=FamilySize.Client_ID WHERE PickUpDay={0}", pickUpDay);
-            //string query = "SELECT * FROM Client INNER JOIN FamilySize";
 
             return DataAccess.ReadSet(query);
         }
@@ -69,18 +60,48 @@ namespace Phase3
                 new MySqlParameter("@bagName", bagName)
             };
 
+            DataAccess.OpenConn();
             WriteData(query, parameters);
+            DataAccess.CloseConn();
+        }
+
+        public static void CompleteDropoff(System.Windows.Forms.DataGridView dgDropoff)
+        {
+            DataAccess.OpenConn();
+            string query = "INSERT INTO Drop_Off_Transaction (Date_of_Drop_Off) VALUES (NOW())";
+            MySqlParameter[] parameters = new MySqlParameter[]
+            {
+            };
+            WriteData(query, parameters);
+            
+            foreach (System.Windows.Forms.DataGridViewRow row in dgDropoff.Rows)
+            {
+                if (row.Cells[0].Value == null)
+                {
+                    continue;
+                }
+                query = "INSERT INTO Drop_Off (Drop_Off_Tx_ID, Product_Name, Source_Name, Quantity_Dropped) VALUES (LAST_INSERT_ID(), @pname, @sname, @quantity)";
+                parameters = new MySqlParameter[]
+                {
+                    new MySqlParameter("@pname", row.Cells[0].Value),
+                    new MySqlParameter("@sname", row.Cells[1].Value),
+                    new MySqlParameter("@quantity", row.Cells[2].Value)
+                };
+                WriteData(query, parameters);
+            }
+
+            DataAccess.CloseConn();
         }
 
         public static DataSet ReadSet(string query)
         {
             try
             {
-                conn.Open();
-
+                DataAccess.OpenConn();
                 DataSet ds = new DataSet();
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 da.Fill(ds, "Results");
+                DataAccess.CloseConn();
 
                 return ds;
             }
@@ -89,21 +110,12 @@ namespace Phase3
                 Console.WriteLine("Error: {0}", ex.ToString());
                 return null;
             }
-            finally
-            {
-                if (conn != null)
-                {
-                    conn.Close();
-                }
-            }
         }
 
         public static MySqlDataReader ReadData(string query, MySqlParameter[] parameters)
         {
             try
             {
-                conn.Open();
-
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Prepare();
 
@@ -120,13 +132,8 @@ namespace Phase3
 
         public static void WriteData(string query, MySqlParameter[] parameters)
         {
-            MySqlConnection conn = null;
-
             try
             {
-                conn = new MySqlConnection(cs);
-                conn.Open();
-
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Prepare();
 
@@ -138,13 +145,34 @@ namespace Phase3
             {
                 Console.WriteLine("Error: {0}", ex.ToString());
             }
-            finally
+        }
+
+        public static void OpenConn()
+        {
+            try
+            {
+                conn.Open();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
+        }
+
+        public static void CloseConn()
+        {
+            try
             {
                 if (conn != null)
                 {
                     conn.Close();
                 }
             }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error: {0}", ex.ToString());
+            }
         }
     }
+
 }

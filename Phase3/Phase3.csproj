@@ -105,6 +105,9 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddMembers.resx">
+      <DependentUpon>AddMembers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clients.resx">
       <DependentUpon>Clients.cs</DependentUpon>
     </EmbeddedResource>

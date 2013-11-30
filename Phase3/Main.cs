@@ -73,6 +73,8 @@ namespace PresentationTier
             control.Name = "dropoff";
             control.Dock = DockStyle.Fill;
             panel1.Controls.Add(control);
+
+            control.addBtnCompleteClickHandler(new EventHandler(CloseClickHandler));
         }
 
         private void cToolStripMenuItem1_Click(object sender, EventArgs e)
